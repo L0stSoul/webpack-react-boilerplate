@@ -1,3 +1,5 @@
+import Autoprefixer from 'autoprefixer';
+
 module.exports = [
     {
         name: 'client',
@@ -13,9 +15,15 @@ module.exports = [
                 {
                     test: /\.jsx?$/,
                     exclude: /(node_modules|bower_components)/,
-                    loaders: ['babel']
+                    loader: 'babel'
+                },
+                {
+                    test: /\.css$/,
+                    loader: 'style!css!postcss',
+
                 }
             ]
-        }
-    },
+        },
+        postcss: () => [Autoprefixer]
+    }
 ];
